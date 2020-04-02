@@ -1,0 +1,1063 @@
+\language "Vietnamese"
+\writing  "Tengwar"
+\mode     "Phonetic"
+\authors  "Laicasaane"
+\version  "1.0.0"
+
+\beg changelog
+  \entry "1.0.0" "Finalize the mode."
+\end
+
+\charset tengwar_ds_annatar true
+\charset tengwar_ds_eldamar true
+\charset tengwar_ds_elfica true
+\charset tengwar_ds_parmaite true
+\charset tengwar_ds_sindarin true
+
+\charset tengwar_guni_annatar true
+\charset tengwar_guni_eldamar true
+\charset tengwar_guni_elfica true
+\charset tengwar_guni_parmaite true
+\charset tengwar_guni_sindarin true
+
+\beg options
+  \beg option glottal_stop IF_NEEDED
+    \value IF_NEEDED 1
+    \value EXPLICIT 2
+    \value NONE 3
+  \end
+
+  \beg option r_value NORMAL
+    \value NORMAL 1
+    \value TRILLED 2
+    \value NORTHERN 3
+    \value RETROFLEX 4
+  \end
+
+  \beg option d_value SOUTHERN
+    \value NORTHERN 1
+    \value SOUTHERN 2
+  \end
+
+  \beg option v_value NORTHERN
+    \value NORTHERN 1
+    \value SOUTHERN 2
+  \end
+
+  \option aspirated_ph false
+  \option aspirated_kh false
+
+  \beg option labialization_mark DASH
+    \value DASH 1
+    \value THREE_DOTS 2
+    \value AUTO 3
+  \end
+
+  \beg option decimal_mark COMMA
+    \value COMMA 1
+    \value POINT 2
+  \end
+
+  \beg option paragraph_stop STYLE_1
+    \value STYLE_1 1
+    \value STYLE_2 2
+    \value STYLE_3 3
+  \end
+
+  \beg option foreign_mark FULL
+    \value FULL 1
+    \value SIMPLE 2
+  \end
+
+  \option historic_tr true
+
+  \beg option huyen_tone STANDARD
+    \value STANDARD 1
+    \value BACKSLASH 2
+  \end
+\end
+
+\beg preprocessor
+  \downcase
+
+  \** RAW TENGWAR **\
+  \rxsubstitute "`tinco'"  "\ue000"
+  \rxsubstitute "`t1-1'"   "\ue000"
+  \rxsubstitute "`parma'"  "\ue001"
+  \rxsubstitute "`t2-1'"   "\ue001"
+  \rxsubstitute "`calma'"  "\ue002"
+  \rxsubstitute "`t3-1'"   "\ue002"
+  \rxsubstitute "`quesse'" "\ue003"
+  \rxsubstitute "`t4-1'"   "\ue003"
+
+  \rxsubstitute "`ando'"  "\ue004"
+  \rxsubstitute "`t1-2'"  "\ue004"
+  \rxsubstitute "`umbar'" "\ue005"
+  \rxsubstitute "`t2-2'"  "\ue005"
+  \rxsubstitute "`anga'"  "\ue006"
+  \rxsubstitute "`t3-2'"  "\ue006"
+  \rxsubstitute "`ungwe'" "\ue007"
+  \rxsubstitute "`t4-2'"  "\ue007"
+
+  \rxsubstitute "`(sule|thule)'" "\ue008"
+  \rxsubstitute "`t1-3'"         "\ue008"
+  \rxsubstitute "`formen'"       "\ue009"
+  \rxsubstitute "`t2-3'"         "\ue009"
+  \rxsubstitute "`aha'"          "\ue00a"
+  \rxsubstitute "`t3-3'"         "\ue00a"
+  \rxsubstitute "`hwesta'"       "\ue00b"
+  \rxsubstitute "`t4-3'"         "\ue00b"
+
+  \rxsubstitute "`anto'"  "\ue00c"
+  \rxsubstitute "`t1-4'"  "\ue00c"
+  \rxsubstitute "`ampa'"  "\ue00d"
+  \rxsubstitute "`t2-4'"  "\ue00d"
+  \rxsubstitute "`anca'"  "\ue00e"
+  \rxsubstitute "`t3-4'"  "\ue00e"
+  \rxsubstitute "`unque'" "\ue00f"
+  \rxsubstitute "`t4-4'"  "\ue00f"
+
+  \rxsubstitute "`(tinco|sule|thule)_(ext|h)?'" "\ue018"
+  \rxsubstitute "`t1-5'"                        "\ue018"
+  \rxsubstitute "`(parma|formen)_(ext|h)?'"     "\ue019"
+  \rxsubstitute "`t2-5'"                        "\ue019"
+  \rxsubstitute "`(calma|aha)_(ext|h)?'"        "\ue01a"
+  \rxsubstitute "`t3-5'"                        "\ue01a"
+  \rxsubstitute "`(quesse|hwesta)_(ext|h)?'"    "\ue01b"
+  \rxsubstitute "`t4-5'"                        "\ue01b"
+
+  \rxsubstitute "`(ando|anto)_(ext|h)?'"   "\ue01c"
+  \rxsubstitute "`t1-6'"                   "\ue01c"
+  \rxsubstitute "`(umbar|ampa)_(ext|h)?'"  "\ue01d"
+  \rxsubstitute "`t2-6'"                   "\ue01d"
+  \rxsubstitute "`(anga|anca)_(ext|h)?'"   "\ue01e"
+  \rxsubstitute "`t3-6'"                   "\ue01e"
+  \rxsubstitute "`(ungwe|unque)_(ext|h)?'" "\ue01f"
+  \rxsubstitute "`t4-6'"                   "\ue01f"
+
+  \rxsubstitute "`numen'"  "\ue010"
+  \rxsubstitute "`t1-7'"   "\ue010"
+  \rxsubstitute "`malta'"  "\ue011"
+  \rxsubstitute "`t2-7'"   "\ue011"
+  \rxsubstitute "`noldo'"  "\ue012"
+  \rxsubstitute "`t3-7'"   "\ue012"
+  \rxsubstitute "`nwalme'" "\ue013"
+  \rxsubstitute "`t4-7'"   "\ue013"
+
+  \rxsubstitute "`ore'"   "\ue014"
+  \rxsubstitute "`t1-8'"  "\ue014"
+  \rxsubstitute "`vala'"  "\ue015"
+  \rxsubstitute "`t2-8'"  "\ue015"
+  \rxsubstitute "`anna'"  "\ue016"
+  \rxsubstitute "`t3-8'"  "\ue016"
+  \rxsubstitute "`vilya'" "\ue017"
+  \rxsubstitute "`t4-8'"  "\ue017"
+
+  \rxsubstitute "`romen'" "\ue020"
+  \rxsubstitute "`t1-9'"  "\ue020"
+  \rxsubstitute "`arda'"  "\ue021"
+  \rxsubstitute "`t2-9'"  "\ue021"
+  \rxsubstitute "`lambe'" "\ue022"
+  \rxsubstitute "`t3-9'"  "\ue022"
+  \rxsubstitute "`alda'"  "\ue023"
+  \rxsubstitute "`t4-9'"  "\ue023"
+
+  \rxsubstitute "`silme'"                "\ue024"
+  \rxsubstitute "`silme_(n(uquerna)?)?'" "\ue025"
+  \rxsubstitute "`esse'"                 "\ue026"
+  \rxsubstitute "`esse_(n(uquerna)?)?'"  "\ue027"
+
+  \rxsubstitute "`hyarmen'"              "\ue028"
+  \rxsubstitute "`t1-11'"                "\ue028"
+  \rxsubstitute "`hwesta_s(indarinwa)?'" "\ue029"
+  \rxsubstitute "`t2-11'"                "\ue029"
+  \rxsubstitute "`yanta'"                "\ue02a"
+  \rxsubstitute "`t3-11'"                "\ue02a"
+  \rxsubstitute "`ure'"                  "\ue02b"
+  \rxsubstitute "`t4-11'"                "\ue02b"
+
+  \rxsubstitute "`osse'"  "\ue032"
+  \rxsubstitute "`t1-12'" "\ue032"
+  \rxsubstitute "`halla'" "\ue02d"
+  \rxsubstitute "`t2-12'" "\ue02d"
+  \rxsubstitute "`ara'"   "\ue02c"
+  \rxsubstitute "`t3-12'" "\ue02c"
+  \rxsubstitute "`telco'" "\ue02e"
+  \rxsubstitute "`t4-12'" "\ue02e"
+
+  \rxsubstitute "`b(ombadil)?_w'"     "\ue031"
+  \rxsubstitute "`t1-13'"             "\ue031"
+  \rxsubstitute "`l(igating)?_telco'" "\ue034"
+  \rxsubstitute "`t2-13'"             "\ue034"
+  \rxsubstitute "`anna_open'"         "\ue036"
+  \rxsubstitute "`t3-13'"             "\ue036"
+  \rxsubstitute "`c(hristopher)?_qu'" "\ue037"
+  \rxsubstitute "`t4-13'"             "\ue037"
+
+  \rxsubstitute "`b(ombadil)?_hw'"    "\ue039"
+  \rxsubstitute "`t1-14'"             "\ue039"
+  \rxsubstitute "`mh'"                "\ue03a"
+  \rxsubstitute "`t2-14'"             "\ue03a"
+  \rxsubstitute "`mh_b(eleriandic)?'" "\ue03b"
+  \rxsubstitute "`t3-14'"             "\ue03b"
+  \rxsubstitute "`hw_l(owdham)?'"     "\ue03c"
+  \rxsubstitute "`t4-14'"             "\ue03c"
+
+  \rxsubstitute "`(vaia|waia|vaiya)'"            "\ue03d"
+  \rxsubstitute "`t1-15'"                        "\ue03d"
+  \rxsubstitute "`silme_(n(uquerna)?_)?(alt|2)'" "\ue03e"
+  \rxsubstitute "`t2-15'"                        "\ue03e"
+  \rxsubstitute "`r(eversed)?_osse'"             "\ue030"
+  \rxsubstitute "`t3-15'"                        "\ue030"
+
+  \rxsubstitute "`t1-16'" "\ue800"
+  \rxsubstitute "`t1-16'" "\ue800"
+  \rxsubstitute "`t2-16'" "\ue801"
+  \rxsubstitute "`t2-16'" "\ue801"
+  \rxsubstitute "`t3-16'" "\ue802"
+  \rxsubstitute "`t3-16'" "\ue802"
+
+  \rxsubstitute "`10'" "\ue07a"
+  \rxsubstitute "`11'" "\ue07b"
+  \rxsubstitute "`12'" "\ue07c"
+
+  \rxsubstitute "`-(s|x)-'" "\uebd4" \** AUTO SARINCE **\
+  \rxsubstitute "`(s|x)-'"  "\uebd0" \** LEFT SARINCE **\
+  \rxsubstitute "`-(s|x)'"  "\uebd8" \** RIGHT SARINCE **\
+  \rxsubstitute "`-(s|x)l'" "\uebda" \** RIGHT SARINCE LAMBE **\
+
+  \rxsubstitute "`__'" "\uec01"
+  \rxsubstitute "`_~'" "\uec10"
+  \rxsubstitute "`--'" "\uec20"
+  \rxsubstitute "`-~'" "\uec30"
+
+  \rxsubstitute "`a'" "\uec40"
+  \rxsubstitute "`e'" "\uec50"
+  \rxsubstitute "`i'" "\uec60"
+  \rxsubstitute "`o'" "\uec70"
+  \rxsubstitute "`u'" "\uec80"
+  \rxsubstitute "`w'" "\ued50"
+
+  \rxsubstitute "`a1'" "\uec40"
+  \rxsubstitute "`e1'" "\uec50"
+
+  \rxsubstitute "`a2'" "\ued80"
+  \rxsubstitute "`a3'" "\ued90"
+  \rxsubstitute "`a4'" "\ueda0"
+  \rxsubstitute "`e2'" "\uedc0"
+
+  \** \rxsubstitute "`a5'" "\uedb0" **\
+  \** \rxsubstitute "`a6'" "\uedd0" **\
+
+  \rxsubstitute "`_a'" "\uec90"
+  \rxsubstitute "`_e'" "\ueca0"
+  \rxsubstitute "`_i'" "\uecb0"
+  \rxsubstitute "`_o'" "\uecc0"
+  \rxsubstitute "`_u'" "\uecd0"
+  \rxsubstitute "`_j'" "\ued60"
+  \rxsubstitute "`_.'" "\ued70"
+
+  \rxsubstitute "`aa'" "\uece0"
+  \rxsubstitute "`ee'" "\uecf0"
+  \rxsubstitute "`ii'" "\ued00"
+  \rxsubstitute "`y'"  "\ued00"
+  \rxsubstitute "`oo'" "\ued10"
+  \rxsubstitute "`uu'" "\ued20"
+
+  \rxsubstitute "`_ee'" "\ued30"
+  \rxsubstitute "`//'"  "\ued30"
+  \rxsubstitute "`_ii'" "\ued40"
+  \rxsubstitute "`_y'"  "\ued40"
+
+  \** RAW TONES **\
+  \rxsubstitute "`(sac|sắc|sắc)'"       "\ue02eˊ"
+  \rxsubstitute "`(huyen|huyền|huyền)'" "\ue02eˋ"
+  \rxsubstitute "`(hoi|hỏi|hỏi)'"       "\ue02eˀ"
+  \rxsubstitute "`(nga|ngã|ngã)'"       "\ue02eˁ"
+  \rxsubstitute "`(nang|nặng|nặng)'"    "\ue02eˬ"
+
+  \** RAW SEMI-VOWELS AND CARRIERS **\
+  \rxsubstitute "`-(i|y)'"     "ɪ" \** YANTA **\
+  \rxsubstitute "`-(a|ê|ô|ơ)'" "ɤ" \** OSSE **\
+  \rxsubstitute "`-(o|u)'"     "ʊ" \** URE **\
+  \substitute   "`|'"          "ʔ" \** HALLA **\
+  \rxsubstitute "`,'"          "\u25cc" \** TELCO **\
+  \rxsubstitute "`;'"          "\u25cb" \** ARA **\
+
+  \** RAW VOWELS **\
+  \rxsubstitute "`;([aăâeêioôơuư])'" "\u25cb\\1"
+
+  \** RAW PUNCTUATION **\
+  \rxsubstitute "`::'"      "\u2e2c"
+  \rxsubstitute "`\\.:\\.'" "\u2058"
+  \rxsubstitute "`:\\.:'"   "\u2e2d"
+  \rxsubstitute "\\.\\.\\." "\u2026"
+  \rxsubstitute "\\.\\."    "\u30fb"
+  \rxsubstitute ":~"        "\u22a2"
+  \rxsubstitute "~:"        "\u22a2"
+
+  \rxsubstitute "\\u005B\\u005B" "「"
+  \rxsubstitute "\\u005D\\u005D" "」"
+  \rxsubstitute "\\u007B\\u007B" "『"
+  \rxsubstitute "\\u007D\\u007D" "』"
+
+  \rxsubstitute "\\u0028" "（"
+  \rxsubstitute "\\u0029" "）"
+  \rxsubstitute "\\u005B" "［"
+  \rxsubstitute "\\u005D" "］"
+  \rxsubstitute "\\u007B" "｛"
+  \rxsubstitute "\\u007D" "｝"
+
+  \rxsubstitute "([^-\\u0020\\u00A0]+)-([^-\\u0020\\u00A0]+)" "\\1\u2e31\\2"
+  \rxsubstitute "([^-\\u0020\\u00A0]+)-(\\w*)"                "\\1\u2e31\\2"
+
+  \** NEGATIVE NUMBERS **\
+  \rxsubstitute "\\-(\\d)" "\ue02c\\1"
+
+  \if "decimal_mark == COMMA"
+    \rxsubstitute "[,](\\d)"      "\u066b\\1"
+    \rxsubstitute "(\\d)[,](\\d)" "\\1\u066b\\2"
+
+    \rxsubstitute "^[.](\\d)"     ". \\1"
+    \rxsubstitute "\\s[.](\\d)"   ". \\1"
+
+    \rxsubstitute "(\\d)[.](\\d)" "\\1\u066c\\2"
+    \rxsubstitute "[.](\\d)"      "\u066c\\1"
+  \else
+    \rxsubstitute "[.](\\d)"      "\u066b\\1"
+    \rxsubstitute "(\\d)[.](\\d)" "\\1\u066b\\2"
+
+    \rxsubstitute "^[,](\\d)"     ", \\1"
+    \rxsubstitute "\\s[,](\\d)"   ", \\1"
+
+    \rxsubstitute "(\\d)[,](\\d)" "\\1\u066c\\2"
+    \rxsubstitute "[,](\\d)"      "\u066c\\1"
+  \endif
+
+  \** SURROUND PUNCTUATION WITH NON-BREAKING SPACES **\
+  \rxsubstitute "([-!?,.…:）;・~–—=”’｝］」』\u2058\u2e2c\u2e2d\u22a2])" "\u00a0\\1"
+  \rxsubstitute "([（“‘｛［「『\u22a3])"                                 "\\1\u00a0"
+
+  \** NON-BREAKING SPACES **\
+  \rxsubstitute "\\u0020+\\u00a0" "\u00a0"
+  \rxsubstitute "__"              "\u00a0"
+
+  \** LABIALIZED K CONSONANT **\
+  \rxsubstitute "qu((á|à|ả|ã|ạ))"        "kʷ\\1"
+  \rxsubstitute "qu((a|á|à|ả|ã|ạ))"      "kʷ\\1"
+
+  \rxsubstitute "qu((í|ì|ỉ|ĩ|ị))"        "kʷ\\1"
+  \rxsubstitute "qu((i|í|ì|ỉ|ĩ|ị))"      "kʷ\\1"
+
+  \** GENERAL LABIALIZED **\
+  \rxsubstitute "u((ýa|ỳa|ỷa|ỹa|ỵa))"    "ʷ\\1"
+  \rxsubstitute "u((ya|ýa|ỳa|ỷa|ỹa|ỵa))" "ʷ\\1"
+
+  \rxsubstitute "o((á|à|ả|ã|ạ))"   "ʷ\\1"
+  \rxsubstitute "o((a|á|à|ả|ã|ạ))" "ʷ\\1"
+
+  \rxsubstitute "o((ắ|ằ|ẳ|ẵ|ặ))"   "ʷ\\1"
+  \rxsubstitute "o((ă|ắ|ằ|ẳ|ẵ|ặ))" "ʷ\\1"
+
+  \rxsubstitute "u((ấ|ầ|ẩ|ẫ|ậ))"   "ʷ\\1"
+  \rxsubstitute "u((â|ấ|ầ|ẩ|ẫ|ậ))" "ʷ\\1"
+
+  \rxsubstitute "o((é|è|ẻ|ẽ|ẹ))"   "ʷ\\1"
+  \rxsubstitute "o((e|é|è|ẻ|ẽ|ẹ))" "ʷ\\1"
+
+  \rxsubstitute "u((ế|ề|ể|ễ|ệ))"   "ʷ\\1"
+  \rxsubstitute "u((ê|ế|ề|ể|ễ|ệ))" "ʷ\\1"
+
+  \rxsubstitute "u((ớ|ờ|ở|ỡ|ợ))"   "ʷ\\1"
+  \rxsubstitute "u((ơ|ớ|ờ|ở|ỡ|ợ))" "ʷ\\1"
+
+  \rxsubstitute "o((ứ|ừ|ử|ữ|ự))"   "ʷ\\1"
+  \rxsubstitute "o((ư|ứ|ừ|ử|ữ|ự))" "ʷ\\1"
+
+  \rxsubstitute "u((ý|ỳ|ỷ|ỹ|ỵ))"   "ʷ\\1"
+  \rxsubstitute "u((y|ý|ỳ|ỷ|ỹ|ỵ))" "ʷ\\1"
+
+  \rxsubstitute "ú(o|y)" "ʷ\\1ˊ"
+  \rxsubstitute "ù(o|y)" "ʷ\\1ˋ"
+  \rxsubstitute "ủ(o|y)" "ʷ\\1ˀ"
+  \rxsubstitute "ũ(o|y)" "ʷ\\1ˁ"
+  \rxsubstitute "ụ(o|y)" "ʷ\\1ˬ"
+
+  \rxsubstitute "ó(a|e)" "ʷ\\1ˊ"
+  \rxsubstitute "ò(a|e)" "ʷ\\1ˋ"
+  \rxsubstitute "ỏ(a|e)" "ʷ\\1ˀ"
+  \rxsubstitute "õ(a|e)" "ʷ\\1ˁ"
+  \rxsubstitute "ọ(a|e)" "ʷ\\1ˬ"
+
+  \** SEMI-VOWELS **\
+  \rxsubstitute "(áy|áy)" "ăˊi"
+  \rxsubstitute "(ày|ày)" "ăˋi"
+  \rxsubstitute "(ảy|ảy)" "ăˀi"
+  \rxsubstitute "(ãy|ãy)" "ăˁi"
+  \rxsubstitute "(ạy|ạy)" "ăˬi"
+  \substitute   "ay"      "ăi"
+
+  \rxsubstitute "(ấy|ấy)" "âˊi"
+  \rxsubstitute "(ầy|ầy)" "âˋi"
+  \rxsubstitute "(ẩy|ẩy)" "âˀi"
+  \rxsubstitute "(ẫy|ẫy)" "âˁi"
+  \rxsubstitute "(ậy|ậy)" "âˬi"
+  \substitute   "ây"      "âi"
+
+  \rxsubstitute "(áu|áu)" "ăˊu"
+  \rxsubstitute "(àu|àu)" "ăˋu"
+  \rxsubstitute "(ảu|ảu)" "ăˀu"
+  \rxsubstitute "(ãu|ãu)" "ăˁu"
+  \rxsubstitute "(ạu|ạu)" "ăˬu"
+  \substitute   "au"      "ău"
+
+  \rxsubstitute "(áo|áo)" "aˊu"
+  \rxsubstitute "(ào|ào)" "aˋu"
+  \rxsubstitute "(ảo|ảo)" "aˀu"
+  \rxsubstitute "(ão|ão)" "aˁu"
+  \rxsubstitute "(ạo|ạo)" "aˬu"
+  \substitute   "ao"      "au"
+
+  \rxsubstitute "(éy|éy)" "eˊi"
+  \rxsubstitute "(èy|èy)" "eˋi"
+  \rxsubstitute "(ẻy|ẻy)" "eˀi"
+  \rxsubstitute "(ẽy|ẽy)" "eˁi"
+  \rxsubstitute "(ẹy|ẹy)" "eˬi"
+  \substitute   "ey"      "ei"
+
+  \rxsubstitute "(ếy|ếy)" "êˊi"
+  \rxsubstitute "(ềy|ềy)" "êˋi"
+  \rxsubstitute "(ểy|ểy)" "êˀi"
+  \rxsubstitute "(ễy|ễy)" "êˁi"
+  \rxsubstitute "(ệy|ệy)" "êˬi"
+  \substitute   "êy"      "êi"
+
+  \rxsubstitute "(éo|éo)" "eˊu"
+  \rxsubstitute "(èo|èo)" "eˋu"
+  \rxsubstitute "(ẻo|ẻo)" "eˀu"
+  \rxsubstitute "(ẽo|ẽo)" "eˁu"
+  \rxsubstitute "(ẹo|ẹo)" "eˬu"
+  \substitute   "eo"      "eu"
+
+  \rxsubstitute "(ýu|ýu)" "iˊu"
+  \rxsubstitute "(ỳu|ỳu)" "iˋu"
+  \rxsubstitute "(ỷu|ỷu)" "iˀu"
+  \rxsubstitute "(ỹu|ỹu)" "iˁu"
+  \rxsubstitute "(ỵu|ỵu)" "iˬu"
+  \substitute   "yu"      "iu"
+
+  \rxsubstitute "(oó|oó)" "ōˊ"
+  \rxsubstitute "(oò|oò)" "ōˋ"
+  \rxsubstitute "(oỏ|oỏ)" "ōˀ"
+  \rxsubstitute "(oõ|oõ)" "ōˁ"
+  \rxsubstitute "(oọ|oọ)" "ōˬ"
+  \substitute   "oo"      "ō"
+
+  \** VOWELS **\
+  \rxsubstitute "(á|á)" "aˊ"
+  \rxsubstitute "(à|à)" "aˋ"
+  \rxsubstitute "(ả|ả)" "aˀ"
+  \rxsubstitute "(ã|ã)" "aˁ"
+  \rxsubstitute "(ạ|ạ)" "aˬ"
+
+  \rxsubstitute "(ắ|ắ)" "ăˊ"
+  \rxsubstitute "(ằ|ằ)" "ăˋ"
+  \rxsubstitute "(ẳ|ẳ)" "ăˀ"
+  \rxsubstitute "(ẵ|ẵ)" "ăˁ"
+  \rxsubstitute "(ặ|ặ)" "ăˬ"
+
+  \rxsubstitute "(ấ|ấ)" "âˊ"
+  \rxsubstitute "(ầ|ầ)" "âˋ"
+  \rxsubstitute "(ẩ|ẩ)" "âˀ"
+  \rxsubstitute "(ẫ|ẫ)" "âˁ"
+  \rxsubstitute "(ậ|ậ)" "âˬ"
+
+  \rxsubstitute "(é|é)" "eˊ"
+  \rxsubstitute "(è|è)" "eˋ"
+  \rxsubstitute "(ẻ|ẻ)" "eˀ"
+  \rxsubstitute "(ẽ|ẽ)" "eˁ"
+  \rxsubstitute "(ẹ|ẹ)" "eˬ"
+
+  \rxsubstitute "(ế|ế)" "êˊ"
+  \rxsubstitute "(ề|ề)" "êˋ"
+  \rxsubstitute "(ể|ể)" "êˀ"
+  \rxsubstitute "(ễ|ễ)" "êˁ"
+  \rxsubstitute "(ệ|ệ)" "êˬ"
+
+  \rxsubstitute "(í|í)" "iˊ"
+  \rxsubstitute "(ì|ì)" "iˋ"
+  \rxsubstitute "(ỉ|ỉ)" "iˀ"
+  \rxsubstitute "(ĩ|ĩ)" "iˁ"
+  \rxsubstitute "(ị|ị)" "iˬ"
+
+  \rxsubstitute "(ó|ó)" "oˊ"
+  \rxsubstitute "(ò|ò)" "oˋ"
+  \rxsubstitute "(ỏ|ỏ)" "oˀ"
+  \rxsubstitute "(õ|õ)" "oˁ"
+  \rxsubstitute "(ọ|ọ)" "oˬ"
+
+  \rxsubstitute "(ố|ố)" "ôˊ"
+  \rxsubstitute "(ồ|ồ)" "ôˋ"
+  \rxsubstitute "(ổ|ổ)" "ôˀ"
+  \rxsubstitute "(ỗ|ỗ)" "ôˁ"
+  \rxsubstitute "(ộ|ộ)" "ôˬ"
+
+  \rxsubstitute "(ớ|ớ)" "ơˊ"
+  \rxsubstitute "(ờ|ờ)" "ơˋ"
+  \rxsubstitute "(ở|ở)" "ơˀ"
+  \rxsubstitute "(ỡ|ỡ)" "ơˁ"
+  \rxsubstitute "(ợ|ợ)" "ơˬ"
+
+  \rxsubstitute "(ú|ú)" "uˊ"
+  \rxsubstitute "(ù|ù)" "uˋ"
+  \rxsubstitute "(ủ|ủ)" "uˀ"
+  \rxsubstitute "(ũ|ũ)" "uˁ"
+  \rxsubstitute "(ụ|ụ)" "uˬ"
+
+  \rxsubstitute "(ứ|ứ)" "ưˊ"
+  \rxsubstitute "(ừ|ừ)" "ưˋ"
+  \rxsubstitute "(ử|ử)" "ưˀ"
+  \rxsubstitute "(ữ|ữ)" "ưˁ"
+  \rxsubstitute "(ự|ự)" "ưˬ"
+
+  \rxsubstitute "(ý|ý)" "yˊ"
+  \rxsubstitute "(ỳ|ỳ)" "yˋ"
+  \rxsubstitute "(ỷ|ỷ)" "yˀ"
+  \rxsubstitute "(ỹ|ỹ)" "yˁ"
+  \rxsubstitute "(ỵ|ỵ)" "yˬ"
+
+  \** GI [Z] **\
+  \substitute   "giʷ"                         "zʷ"
+  \rxsubstitute "gi((a|ă|â|e|ê|o|ô|ơ|u|ư|y))" "z\\1"
+  \rxsubstitute "gi((|ˊ|ˋ|ˀ|ˁ|ˬ))"            "zi\\1"
+\end
+
+\beg processor
+  \beg rules raw
+    {UNI_E000} --> TINCO
+    {UNI_E001} --> PARMA
+    {UNI_E002} --> CALMA
+    {UNI_E003} --> QUESSE
+
+    {UNI_E004} --> ANDO
+    {UNI_E005} --> UMBAR
+    {UNI_E006} --> ANGA
+    {UNI_E007} --> UNGWE
+
+    {UNI_E008} --> SULE
+    {UNI_E009} --> FORMEN
+    {UNI_E00A} --> AHA
+    {UNI_E00B} --> HWESTA
+
+    {UNI_E00C} --> ANTO
+    {UNI_E00D} --> AMPA
+    {UNI_E00E} --> ANCA
+    {UNI_E00F} --> UNQUE
+
+    {UNI_E018} --> TINCO_EXT
+    {UNI_E019} --> PARMA_EXT
+    {UNI_E01A} --> CALMA_EXT
+    {UNI_E01B} --> QUESSE_EXT
+
+    {UNI_E01C} --> ANDO_EXT
+    {UNI_E01D} --> UMBAR_EXT
+    {UNI_E01E} --> ANGA_EXT
+    {UNI_E01F} --> UNGWE_EXT
+
+    {UNI_E010} --> NUMEN
+    {UNI_E011} --> MALTA
+    {UNI_E012} --> NOLDO
+    {UNI_E013} --> NWALME
+
+    {UNI_E014} --> ORE
+    {UNI_E015} --> VALA
+    {UNI_E016} --> ANNA
+    {UNI_E017} --> VILYA
+
+    {UNI_E020} --> ROMEN
+    {UNI_E021} --> ARDA
+    {UNI_E022} --> LAMBE
+    {UNI_E023} --> ALDA
+
+    {UNI_E024} --> SILME
+    {UNI_E025} --> SILME_NUQUERNA
+    {UNI_E026} --> ESSE
+    {UNI_E027} --> ESSE_NUQUERNE
+
+    {UNI_E028} --> HYARMEN
+    {UNI_E029} --> HWESTA_SINDARINWA
+    {UNI_E02A} --> YANTA
+    {UNI_E02B} --> URE
+
+    {UNI_E032} --> OSSE
+    {UNI_E02D} --> HALLA
+    {UNI_E02C} --> ARA
+    {UNI_E02E} --> TELCO
+
+    {UNI_E031} --> BOMBADIL_W
+    {UNI_E034} --> LIGATING_SHORT_CARRIER
+    {UNI_E036} --> ANNA_OPEN
+    {UNI_E037} --> CHRISTOPHER_QU
+
+    {UNI_E039} --> BOMBADIL_HW
+    {UNI_E03A} --> TW_MH
+    {UNI_E03B} --> TW_MH_BELERIANDIC
+    {UNI_E03C} --> TW_HW_LOWDHAM
+
+    {UNI_E03D} --> VAIA
+    {UNI_E03E} --> SILME_NUQUERNA_ALT
+    {UNI_E030} --> REVERSED_OSSE
+
+    {UNI_E800} --> AHA_TINCO
+    {UNI_E801} --> HWESTA_TINCO
+    {UNI_E802} --> SILME_AHA
+
+    {UNI_E07A} --> NUM_10
+    {UNI_E07B} --> NUM_11
+    {UNI_E07C} --> NUM_12
+
+    {UNI_EBD4} --> SARINCE \** AUTO SARINCE **\
+    {UNI_EBD0} --> LEFT_SARINCE \** LEFT SARINCE **\
+    {UNI_EBD8} --> RIGHT_SARINCE \** RIGHT SARINCE **\
+    {UNI_EBDA} --> RIGHT_SARINCE_LAMBE \** RIGHT SARINCE LAMBE **\
+
+    {UNI_EC01} --> GEMINATE_SIGN
+    {UNI_EC10} --> GEMINATE_SIGN_TILD
+    {UNI_EC20} --> NASALIZE_SIGN
+    {UNI_EC30} --> NASALIZE_SIGN_TILD
+
+    {UNI_EC40} --> A_TEHTA
+    {UNI_EC50} --> E_TEHTA
+    {UNI_EC60} --> I_TEHTA
+    {UNI_EC70} --> O_TEHTA
+    {UNI_EC80} --> U_TEHTA
+    {UNI_ED50} --> SEV_TEHTA
+
+    {UNI_ED80} --> A_TEHTA_REVERSED
+    {UNI_ED90} --> A_TEHTA_CIRCUM
+    {UNI_EDA0} --> A_TEHTA_CIRCUM_REVERSED
+    \** {UNI_EDB0} --> THSUP_LAMBDA **\
+    {UNI_EDC0} --> E_TEHTA_GRAVE
+    \** {UNI_EDD0} --> BREVE_TEHTA **\
+
+    {UNI_EC90} --> A_TEHTA_INF
+    {UNI_ECA0} --> E_TEHTA_INF
+    {UNI_ECB0} --> I_TEHTA_INF
+    {UNI_ECC0} --> O_TEHTA_INF
+    {UNI_ECD0} --> U_TEHTA_INF
+    {UNI_ED60} --> SEV_TEHTA_INF
+    {UNI_ED70} --> CIRC_TEHTA_INF
+
+    {UNI_ECE0} --> A_TEHTA_DOUBLE
+    {UNI_ECF0} --> E_TEHTA_DOUBLE
+    {UNI_ED00} --> I_TEHTA_DOUBLE
+    {UNI_ED10} --> O_TEHTA_DOUBLE
+    {UNI_ED20} --> U_TEHTA_DOUBLE
+
+    {UNI_ED30} --> E_TEHTA_DOUBLE_INF
+    {UNI_ED40} --> I_TEHTA_DOUBLE_INF
+  \end
+
+  \beg rules literals
+    {_A_}       === A_TEHTA
+    {_A_BREVE_} === A_TEHTA_REVERSED
+    {_A_HAT_}   === TEHTA_BREVE
+    {_E_}       === E_TEHTA_GRAVE
+    {_E_HAT_}   === E_TEHTA
+    {_I_}       === I_TEHTA
+    {_O_}       === U_TEHTA
+    {_O_HAT_}   === O_TEHTA
+    {_O_HORN_}  === A_TEHTA_CIRCUM
+    {_U_}       === SEV_TEHTA
+    {_U_HORN_}  === Y_TEHTA
+    {_Y_}       === I_TEHTA
+    {_OO_}      === U_TEHTA
+
+    {VOWELS}   === a     * ă           * â         * e     * ê         * i     * o     * ô         * ơ          * u     * ư          * y     * ō
+    {_VOWELS_} === {_A_} * {_A_BREVE_} * {_A_HAT_} * {_E_} * {_E_HAT_} * {_I_} * {_O_} * {_O_HAT_} * {_O_HORN_} * {_U_} * {_U_HORN_} * {_Y_} * {_OO_}
+
+    {_SIMPLE_VOWELS_} === TELCO [{_VOWELS_}]
+
+    {_NGANG_} === {NULL}
+    {_SAC_}   === E_TEHTA_INF
+    {_HOI_}   === U_TEHTA_INF
+    {_NGA_}   === O_TEHTA_INF
+    {_NANG_}  === Y_TEHTA_INF
+
+    \if "huyen_tone == BACKSLASH"
+      {_HUYEN_} === E_TEHTA_GRAVE_INF
+    \else
+      {_HUYEN_} === THINF_STROKE
+    \endif
+
+    {TONES}   === ˊ       * ˋ         * ˀ       * ˁ       * ˬ
+    {_TONES_} === {_SAC_} * {_HUYEN_} * {_HOI_} * {_NGA_} * {_NANG_}
+
+    {TONES_FULL}   === {TONES}   * {NULL}
+    {_TONES_FULL_} === {_TONES_} * {_NGANG_}
+
+    \if "glottal_stop != NONE"
+      {_ZERO_} === HALLA
+    \else
+      {_ZERO_} === {NULL}
+    \endif
+
+    \if "r_value == NORMAL"
+      {_R_} === ROMEN
+    \elsif "r_value == TRILLED"
+      {_R_} === ARDA
+    \elsif "r_value == RETROFLEX"
+      {_R_} === ESSE_NUQUERNA
+    \else
+      {_R_} === ESSE
+    \endif
+
+    \if "d_value == SOUTHERN"
+      {_D_} === ANNA
+    \else
+      {_D_} === ESSE
+    \endif
+
+    \if "v_value == NORTHERN"
+      {_V_} === AMPA
+    \else
+      {_V_} === ANNA
+    \endif
+
+    \if aspirated_ph
+      {_PH_} === TW_EXT_12
+    \else
+      {_PH_} === FORMEN
+    \endif
+
+    \if aspirated_kh
+      {_KH_} === TW_EXT_13
+    \else
+      {_KH_} === AHA
+    \endif
+
+    {K}        === (c, k, q)
+    {G}        === (g, gh)
+    {NG}       === (ng, ngh)
+    {K_CLOSED} === (cp, kp)
+
+    {CARRIERS}   === ɤ    * ɪ     * ʊ   * ʔ     * {UNI_25CC} * {UNI_25CB}
+    {_CARRIERS_} === OSSE * YANTA * URE * HALLA * TELCO      * ARA
+
+    {C1}   === t     * p     * {K}   * {K_CLOSED}
+    {_C1_} === TINCO * PARMA * CALMA * QUESSE
+
+    {C2}   === đ    * b     * gg
+    {_C2_} === ANDO * UMBAR * ANGA
+
+    {C3}   === ch    * ph     * f      * kh     * kkh
+    {_C3_} === THULE * {_PH_} * FORMEN * {_KH_} * AHA
+
+    \if historic_tr
+      {C4}   === v     * {G}
+      {_C4_} === {_V_} * ANCA
+    \else
+      {C4}   === tr   * v     * {G}
+      {_C4_} === ANTO * {_V_} * ANCA
+    \endif
+
+    {C5}   === th        * phh       * khh
+    {_C5_} === TW_EXT_11 * TW_EXT_12 * TW_EXT_13
+
+    {C6}   === dh        * bh        * ggh
+    {_C6_} === TW_EXT_21 * TW_EXT_22 * TW_EXT_23
+
+    {C7}   === n     * m     * {NG}  * ngm
+    {_C7_} === NUMEN * MALTA * NOLDO * NWALME
+
+    {C8}   === nh  * d     * w
+    {_C8_} === ORE * {_D_} * VILYA
+
+    \if historic_tr
+      {C9}   === r     * rr   * l     * tr
+      {_C9_} === {_R_} * ARDA * LAMBE * ALDA
+    \else
+      {C9}   === r     * rr   * l
+      {_C9_} === {_R_} * ARDA * LAMBE
+    \endif
+
+    {C10}   === x     * s              * z    * rz
+    {_C10_} === SILME * SILME_NUQUERNA * ESSE * ESSE_NUQUERNA
+
+    {C11}   === h
+    {_C11_} === HYARMEN
+
+    {CONSONANTS}   === {C1}   * {C2}   * {C3}   * {C4}   * {C5}   * {C6}   * {C7}   * {C8}   * {C9}   * {C10}   * {C11}
+    {_CONSONANTS_} === {_C1_} * {_C2_} * {_C3_} * {_C4_} * {_C5_} * {_C6_} * {_C7_} * {_C8_} * {_C9_} * {_C10_} * {_C11_}
+
+    {FINALS}          === t     * p     * {K}    * ch    * n     * m     * nh  * {NG}
+    {_FINALS_OPENED_} === TINCO * PARMA * CALMA  * THULE * NUMEN * MALTA * ORE * NOLDO
+    {_FINALS_CLOSED_} === TINCO * PARMA * QUESSE * THULE * NUMEN * MALTA * ORE * NWALME
+
+    {VOWELS_OPENED}   === a     * ă           * â         * e     * ê         * i     * ơ          * ư          * y     * ō
+    {_VOWELS_OPENED_} === {_A_} * {_A_BREVE_} * {_A_HAT_} * {_E_} * {_E_HAT_} * {_I_} * {_O_HORN_} * {_U_HORN_} * {_Y_} * {_OO_}
+
+    {VOWELS_OPENED_NO_I}   === a     * ă           * â         * e     * ê         * ơ          * ư          * y     * ō
+    {_VOWELS_OPENED_NO_I_} === {_A_} * {_A_BREVE_} * {_A_HAT_} * {_E_} * {_E_HAT_} * {_O_HORN_} * {_U_HORN_} * {_Y_} * {_OO_}
+
+    {VOWELS_CLOSED}   === o     * ô         * u
+    {_VOWELS_CLOSED_} === {_O_} * {_O_HAT_} * {_U_}
+
+    {IE}   === (iê, yê)   [{TONES_FULL}]   [u * {NULL}]
+    {_IE_} === OSSE {_I_} [{_TONES_FULL_}] [URE * {NULL}]
+
+    {IA}   === i          [{TONES_FULL}]    a
+    {_IA_} === OSSE {_I_} [{_TONES_FULL_}]
+
+    {YA}   === y          [{TONES_FULL}]    a
+    {_YA_} === OSSE {_I_} [{_TONES_FULL_}]
+
+    {U7O7}   === ươ              [{TONES_FULL}]   [u * i * {NULL}]
+    {_U7O7_} === OSSE {_U_HORN_} [{_TONES_FULL_}] [URE * YANTA * {NULL}]
+
+    {U7A}   === ư               [{TONES_FULL}]    a
+    {_U7A_} === OSSE {_U_HORN_} [{_TONES_FULL_}]
+
+    {UO}   === uô         [{TONES_FULL}]   [i * {NULL}]
+    {_UO_} === OSSE {_U_} [{_TONES_FULL_}] [YANTA * {NULL}]
+
+    {UA}   === u          [{TONES_FULL}]    a
+    {_UA_} === OSSE {_U_} [{_TONES_FULL_}]
+
+    {VOWEL_I}   === a     * ă           * â         * e     * ê         * o     * ô         * ơ          * u     * ư
+    {_VOWEL_I_} === {_A_} * {_A_BREVE_} * {_A_HAT_} * {_E_} * {_E_HAT_} * {_O_} * {_O_HAT_} * {_O_HORN_} * {_U_} * {_U_HORN_}
+
+    {VOWEL_U}   === a     * ă           * â         * e     * ê         * i     * ô         * ơ          * ư
+    {_VOWEL_U_} === {_A_} * {_A_BREVE_} * {_A_HAT_} * {_E_} * {_E_HAT_} * {_I_} * {_O_HAT_} * {_O_HORN_} * {_U_HORN_}
+
+    {_W_DOTS_} === A_TEHTA_INF
+    {_W_DASH_} === GEMINATE_SIGN
+
+    \if "labialization_mark == AUTO || labialization_mark == DASH"
+      {_W_} === {_W_DASH_}
+    \else
+      {_W_} === {_W_DOTS_}
+    \endif
+
+    {W}    === ʷ
+    {_WT_} === URE
+    {WN}   === [{W}   * {NULL}]
+    {_WN_} === [{_W_} * {NULL}]
+
+    \*******************\
+    \** TRANSCRIPTION **\
+    \*******************\
+
+    [{TONES}]    --> [{_TONES_}]
+    [{CARRIERS}] --> [{_CARRIERS_}]
+
+    [{CARRIERS}] [{VOWELS}] --> [{_CARRIERS_}] [{_VOWELS_}]
+
+    [{CONSONANTS}] {WN} [{VOWELS}] --> [{_CONSONANTS_}] {_WN_} {_SIMPLE_VOWELS_}
+    [{CONSONANTS}]                 --> [{_CONSONANTS_}]
+
+    [{CONSONANTS}] {WN} {IE}       --> [{_CONSONANTS_}] {_WN_} {_IE_}
+    [{CONSONANTS}]      {U7O7}     --> [{_CONSONANTS_}] {_U7O7_}
+    [{CONSONANTS}]      {UO}       --> [{_CONSONANTS_}] {_UO_}
+
+    [{CONSONANTS}] {WN} {YA}       --> [{_CONSONANTS_}] {_WN_} {_YA_}
+    [{CONSONANTS}]      {IA}       --> [{_CONSONANTS_}] {_IA_}
+    [{CONSONANTS}]      {U7A}      --> [{_CONSONANTS_}] {_U7A_}
+    [{CONSONANTS}]      {UA}       --> [{_CONSONANTS_}] {_UA_}
+
+    [{CONSONANTS}] {WN} [{VOWEL_I}] [{TONES_FULL}] i --> [{_CONSONANTS_}] {_WN_} YANTA [{_VOWEL_I_}] [{_TONES_FULL_}]
+    [{CONSONANTS}] {WN} [{VOWEL_U}] [{TONES_FULL}] u --> [{_CONSONANTS_}] {_WN_} URE   [{_VOWEL_U_}] [{_TONES_FULL_}]
+
+    \if "glottal_stop == EXPLICIT"
+      _ [{VOWELS}] --> {_ZERO_} {_SIMPLE_VOWELS_}
+
+      _ {IE}   --> {_ZERO_} {_IE_}
+      _ {U7O7} --> {_ZERO_} {_U7O7_}
+      _ {UO}   --> {_ZERO_} {_UO_}
+
+      _ {IA}  --> {_ZERO_} {_IA_}
+      _ {U7A} --> {_ZERO_} {_U7A_}
+      _ {UA}  --> {_ZERO_} {_UA_}
+
+      _ [{VOWEL_I}] [{TONES_FULL}] i --> {_ZERO_} YANTA [{_VOWEL_I_}] [{_TONES_FULL_}]
+      _ [{VOWEL_U}] [{TONES_FULL}] u --> {_ZERO_} URE   [{_VOWEL_U_}] [{_TONES_FULL_}]
+
+      _ [{VOWELS_OPENED}] [{TONES_FULL}] [{FINALS}] --> 2, 3, 1 --> {_ZERO_} [{_FINALS_OPENED_}] [{_VOWELS_OPENED_}] [{_TONES_FULL_}]
+      _ [{VOWELS_CLOSED}] [{TONES_FULL}] [{FINALS}] --> 2, 3, 1 --> {_ZERO_} [{_FINALS_CLOSED_}] [{_VOWELS_CLOSED_}] [{_TONES_FULL_}]
+    \endif
+
+    [{VOWELS}] --> {_SIMPLE_VOWELS_}
+
+    {IE}   --> {_IE_}
+    {U7O7} --> {_U7O7_}
+    {UO}   --> {_UO_}
+
+    {IA}  --> {_IA_}
+    {U7A} --> {_U7A_}
+    {UA}  --> {_UA_}
+
+    [{VOWEL_I}] [{TONES_FULL}] i --> YANTA [{_VOWEL_I_}] [{_TONES_FULL_}]
+    [{VOWEL_U}] [{TONES_FULL}] u --> URE   [{_VOWEL_U_}] [{_TONES_FULL_}]
+
+    [{VOWELS_OPENED}] [{TONES_FULL}] [{FINALS}] --> 2, 3, 1 --> [{_FINALS_OPENED_}] [{_VOWELS_OPENED_}] [{_TONES_FULL_}]
+    [{VOWELS_CLOSED}] [{TONES_FULL}] [{FINALS}] --> 2, 3, 1 --> [{_FINALS_CLOSED_}] [{_VOWELS_CLOSED_}] [{_TONES_FULL_}]
+
+    \if "glottal_stop == EXPLICIT || glottal_stop == IF_NEEDED"
+
+      \if "labialization_mark == AUTO"
+        {_W_AUTO_} === {_W_DOTS_}
+      \else
+        {_W_AUTO_} === {_W_}
+      \endif
+
+      _ {W} [{VOWEL_I}] [{TONES_FULL}] i --> {_ZERO_} {_W_AUTO_} YANTA [{_VOWEL_I_}] [{_TONES_FULL_}]
+      _ {W} [{VOWEL_U}] [{TONES_FULL}] u --> {_ZERO_} {_W_AUTO_} URE   [{_VOWEL_U_}] [{_TONES_FULL_}]
+
+      _ {W} [{VOWELS}] --> {_ZERO_} {_W_AUTO_} {_SIMPLE_VOWELS_}
+      _ {W} {IE}       --> {_ZERO_} {_W_AUTO_} {_IE_}
+      _ {W} {IA}       --> {_ZERO_} {_W_AUTO_} {_IA_}
+      _ {W} {YA}       --> {_ZERO_} {_W_AUTO_} {_YA_}
+
+      _ {W} [{VOWELS_OPENED}] [{TONES_FULL}] [{FINALS}] --> 2, 3, 1 --> {_ZERO_} {_W_AUTO_} [{_FINALS_OPENED_}] [{_VOWELS_OPENED_}] [{_TONES_FULL_}]
+      _ {W} [{VOWELS_CLOSED}] [{TONES_FULL}] [{FINALS}] --> 2, 3, 1 --> {_ZERO_} {_W_AUTO_} [{_FINALS_CLOSED_}] [{_VOWELS_CLOSED_}] [{_TONES_FULL_}]
+
+      {W} [{VOWEL_I}] [{TONES_FULL}] i --> {_ZERO_} {_W_AUTO_} YANTA [{_VOWEL_I_}] [{_TONES_FULL_}]
+      {W} [{VOWEL_U}] [{TONES_FULL}] u --> {_ZERO_} {_W_AUTO_} URE   [{_VOWEL_U_}] [{_TONES_FULL_}]
+
+      {W} [{VOWELS}] --> {_ZERO_} {_W_AUTO_} {_SIMPLE_VOWELS_}
+      {W} {IE}       --> {_ZERO_} {_W_AUTO_} {_IE_}
+      {W} {IA}       --> {_ZERO_} {_W_AUTO_} {_IA_}
+      {W} {YA}       --> {_ZERO_} {_W_AUTO_} {_YA_}
+
+      {W} [{VOWELS_OPENED}] [{TONES_FULL}] [{FINALS}] --> 2, 3, 1 --> {_ZERO_} {_W_AUTO_} [{_FINALS_OPENED_}] [{_VOWELS_OPENED_}] [{_TONES_FULL_}]
+      {W} [{VOWELS_CLOSED}] [{TONES_FULL}] [{FINALS}] --> 2, 3, 1 --> {_ZERO_} {_W_AUTO_} [{_FINALS_CLOSED_}] [{_VOWELS_CLOSED_}] [{_TONES_FULL_}]
+
+    \else
+      {W} [{VOWEL_I}] [{TONES_FULL}] i --> {_WT_} YANTA [{_VOWEL_I_}] [{_TONES_FULL_}]
+      {W} [{VOWEL_U}] [{TONES_FULL}] u --> {_WT_} URE   [{_VOWEL_U_}] [{_TONES_FULL_}]
+
+      {W} [{VOWELS}] --> {_WT_} {_SIMPLE_VOWELS_}
+      {W} {IE}       --> {_WT_} {_IE_}
+      {W} {IA}       --> {_WT_} {_IA_}
+      {W} {YA}       --> {_WT_} {_YA_}
+
+      {W} [{VOWELS_OPENED}] [{TONES_FULL}] [{FINALS}] --> 2, 3, 1 --> {_WT_} [{_FINALS_OPENED_}] [{_VOWELS_OPENED_}] [{_TONES_FULL_}]
+      {W} [{VOWELS_CLOSED}] [{TONES_FULL}] [{FINALS}] --> 2, 3, 1 --> {_WT_} [{_FINALS_CLOSED_}] [{_VOWELS_CLOSED_}] [{_TONES_FULL_}]
+    \endif
+
+    [{CONSONANTS}] [{VOWELS_OPENED}] [{TONES_FULL}] [{FINALS}] --> 1, 3, 4, 2 --> [{_CONSONANTS_}] [{_FINALS_OPENED_}] [{_VOWELS_OPENED_}] [{_TONES_FULL_}]
+    [{CONSONANTS}] [{VOWELS_CLOSED}] [{TONES_FULL}] [{FINALS}] --> 1, 3, 4, 2 --> [{_CONSONANTS_}] [{_FINALS_CLOSED_}] [{_VOWELS_CLOSED_}] [{_TONES_FULL_}]
+
+    [{CONSONANTS}] {W} [{VOWELS_OPENED_NO_I}] [{TONES_FULL}] [{FINALS}] --> 1, 3, 4, 2 --> [{_CONSONANTS_}] {_W_} [{_FINALS_OPENED_}] [{_VOWELS_OPENED_NO_I_}] [{_TONES_FULL_}]
+  \end
+
+  \beg rules punctuation
+    {EXCLAM}           === !
+    {QUESTION}         === ?
+    {HALF_STOP}        === ,
+    {STOP}             === .
+    {ELLIPSIS}         === …
+    {EXPLANATION}      === :
+    {L_PAREN}          === （
+    {R_PAREN}          === ）
+    {SEPARATOR}        === ;
+    {PARA_STOP}        === {UNI_30FB}
+    {DASH}             === (~, -, –, —)
+    {LDASH_EXT}        === {UNI_22A3}
+    {RDASH_EXT}        === {UNI_22A2}
+    {DDASH}            === =
+    {QUOT}             === (", ')
+    {LQUOT}            === (“, ‘)
+    {RQUOT}            === (”, ’)
+    {LBRACKETS}        === (｛, ［)
+    {RBRACKETS}        === (｝, ］)
+    {DECIMAL_MARK}     === {UNI_066B}
+    {DIGIT_GROUP_MARK} === {UNI_066C}
+    {WORD_SPLITTER}    === {UNI_2E31}
+    {LLANG}            === 「
+    {RLANG}            === 」
+    {LLANG_FULL}       === 『
+    {RLANG_FULL}       === 』
+    {PUNCT_4}          === {UNI_2058}
+    {PUNCT_4S}         === {UNI_2E2C}
+    {PUNCT_5}          === {UNI_2E2D}
+
+    {_EXCLAM_}           === PUNCT_EXCLAM
+    {_QUESTION_}         === PUNCT_INTERR
+    {_HALF_STOP_}        === PUNCT_DOT
+    {_STOP_}             === PUSTA_4_HALFED
+    {_ELLIPSIS_}         === PUNCT_DOT PUNCT_DOT PUNCT_DOT
+    {_EXPLANATION_}      === PUNCT_TDOT
+    {_LPAREN_}           === PUNCT_PAREN_L_ALT
+    {_RPAREN_}           === PUNCT_PAREN_R_ALT
+    {_SEPARATOR_}        === PUNCT_DDOT
+    {_DASH_}             === PUNCT_TILD
+    {_LDASH_EXT_}        === PUNCT_TILD PUNCT_DDOT
+    {_RDASH_EXT_}        === PUNCT_DDOT PUNCT_TILD
+    {_DDASH_}            === PUNCT_DTILD
+    {_QUOT_}             === DQUOT_OPEN
+    {_LQUOT_}            === DQUOT_OPEN
+    {_RQUOT_}            === DQUOT_CLOSE
+    {_LBRACKETS_}        === BOOKMARK_SIGN
+    {_RBRACKETS_}        === BOOKMARK_SIGN
+    {_DECIMAL_MARK_}     === PUNCT_DDOT
+    {_DIGIT_GROUP_MARK_} === PUNCT_DOT
+    {_WORD_SPLITTER_}    === PUNCT_DOT
+    {_PUNCT_4_}          === PUSTA_4
+    {_PUNCT_4S_}         === PUSTA_4_SQUARED
+    {_PUNCT_5_}          === PUSTA_5
+
+    \if "foreign_mark == FULL"
+      {_LLANG_}         === DQUOT_OPEN PUNCT_DDOT
+      {_RLANG_}         === PUNCT_DDOT DQUOT_CLOSE
+      {_LLANG_FULL_}    === BOOKMARK_SIGN PUNCT_DOT
+      {_RLANG_FULL_}    === PUNCT_DOT BOOKMARK_SIGN
+    \else
+      {_LLANG_}         === DQUOT_OPEN
+      {_RLANG_}         === DQUOT_CLOSE
+      {_LLANG_FULL_}    === BOOKMARK_SIGN
+      {_RLANG_FULL_}    === BOOKMARK_SIGN
+    \endif
+
+    \if "paragraph_stop == STYLE_1"
+      {_PARA_STOP_} === PUSTA_4
+    \elsif "paragraph_stop == STYLE_2"
+      {_PARA_STOP_} === PUSTA_4_SQUARED
+    \else
+      {_PARA_STOP_} === PUSTA_5
+    \endif
+
+    {NBSP} --> NBSP
+
+    {DECIMAL_MARK}     --> {_DECIMAL_MARK_}
+    {DIGIT_GROUP_MARK} --> {_DIGIT_GROUP_MARK_}
+
+    {RPUNCTS}   === {EXCLAM}   * {QUESTION}    * {HALF_STOP}   * {STOP}    * {ELLIPSIS}     * {EXPLANATION}   * {R_PAREN}  * {SEPARATOR}   * {PARA_STOP}   * {DASH}   * {RDASH_EXT}   * {DDASH}   * {RQUOT}   * {RBRACKETS}   * {RLANG}   * {RLANG_FULL}   * {PUNCT_4}   * {PUNCT_4S}   * {PUNCT_5}
+    {_RPUNCTS_} === {_EXCLAM_} * {_QUESTION_}  * {_HALF_STOP_} * {_STOP_}  * {_ELLIPSIS_}   * {_EXPLANATION_} * {_RPAREN_} * {_SEPARATOR_} * {_PARA_STOP_} * {_DASH_} * {_RDASH_EXT_} * {_DDASH_} * {_RQUOT_} * {_RBRACKETS_} * {_RLANG_} * {_RLANG_FULL_} * {_PUNCT_4_} * {_PUNCT_4S_} * {_PUNCT_5_}
+    {LPUNCTS}   === {L_PAREN}  * {LDASH_EXT}   * {LQUOT}       * {LLANG}   * {LLANG_FULL}   * {LBRACKETS}
+    {_LPUNCTS_} === {_LPAREN_} * {_LDASH_EXT_} * {_LQUOT_}     * {_LLANG_} * {_LLANG_FULL_} * {_LBRACKETS_}
+
+    [{RPUNCTS}] --> [{_RPUNCTS_}]
+    [{LPUNCTS}] --> [{_LPUNCTS_}]
+    {QUOT}      --> SPACE {_QUOT_} SPACE
+
+    {WORD_SPLITTER}  --> {_WORD_SPLITTER_}
+  \end
+
+  \beg rules  numbers
+    0 --> NUM_0
+    1 --> NUM_1
+    2 --> NUM_2
+    3 --> NUM_3
+    4 --> NUM_4
+    5 --> NUM_5
+    6 --> NUM_6
+    7 --> NUM_7
+    8 --> NUM_8
+    9 --> NUM_9
+  \end
+\end
+
+\beg postprocessor
+  \resolve_virtuals
+\end
